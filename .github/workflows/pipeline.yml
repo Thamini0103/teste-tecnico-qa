@@ -27,8 +27,8 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
-      - name: Instalar Cypress Binary
-        run: npx cypress install
-
-      - name: Executar testes Cypress
-        run: npx cypress run
+      - name: Executar Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          install: true
+          runTests: true

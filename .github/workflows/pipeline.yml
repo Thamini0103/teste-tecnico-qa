@@ -10,7 +10,6 @@ on:
       - main
 
 jobs:
-
   cypress-run:
 
     runs-on: ubuntu-latest
@@ -20,7 +19,7 @@ jobs:
       - name: Checkout do projeto
         uses: actions/checkout@v4
 
-      - name: Instalar Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -28,5 +27,8 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
-      - name: Executar testes Cypress
+      - name: Dar permissão ao Cypress
+        run: chmod +x node_modules/.bin/cypress
+
+      - name: Executar testes
         run: npx cypress run
